@@ -5,8 +5,8 @@ const Department = require('./Department');
 //in db.js we are exporting the Sequelize client object
 //which has the method sync() on it
 
-Department.hasMany(User);
-// User.hasMany(Department);
+// Department.hasMany(User);
+User.hasMany(Department);
 
 const sync = () => {
     // console.log(db);

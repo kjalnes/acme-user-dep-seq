@@ -17,6 +17,10 @@ h1 {
     text-transform: uppercase;
 }
 
+a {
+  color: grey;
+}
+
 h1 a {
   color: magenta;
 }
@@ -45,7 +49,7 @@ button {
   /*padding : 20px;*/
 }
 
-.user-box {
+.user-box, .department-box {
   border: 1px dotted gray;
   padding: 3%;
 }

@@ -19,15 +19,20 @@ db.seed();
 app.get('/', (req, res, next) => {
     // res.send('heu')
     var obj = [];
-    db.models.User.findAll()
-    // .then( (allUsers) => res.render('index', { allUsers }))
+    var dep;
+    var users;
+    return db.models.User.findAll()
     .then( (allUsers) => {
-        obj.push(allUsers);
-        db.models.Department.findAll()
-        .then( (allDepartments) => obj.push(allDepartments))
+        users = allUsers;
+        return db.models.Department.findAll()
+        .then( (allDepartments) => dep = allDepartments )
 
     })
-    .then( (allUsers) => res.render('index', { allUsers: obj[0], allDepartments: obj[1] }))
+    .then( (allUsers) => {
+        console.log('users', users)
+        console.log('dep', dep)
+        res.render('index', { allUsers : users, allDepartments: dep  })
+    })
 
 })
 

@@ -8,9 +8,11 @@
         <div class="box">
             <h2> DEPARTMENTS </h2>
             <div class="department-box">
-                {% for department in allDepartments %}
+                <!-- {{ allDepartments | json }} -->
+                 {% for department in allDepartments %}
                     {% include './_departmentList.html' with { department } %}
-                {% endfor %}
+                 {% endfor %}
+
             </div>
 
 
