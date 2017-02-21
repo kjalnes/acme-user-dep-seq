@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/styles.css" />
+    </head>
+    <body>
+        <h1><a href="/">Acme Users and Departments Sequelize</a></h1>
+
+        <div class="box">
+            <h2> DEPARTMENTS </h2>
+            <div class="department-box">
+                {% for department in allDepartments %}
+                    {% include './_departmentList.html' with { department } %}
+                {% endfor %}
+            </div>
+
+
+        </div>
+
+        <div class="box">
+            <h2> USERS </h2>
+            <div class="user-box">
+                {% for user in allUsers %}
+                    {% include './_usersList.html' with { user } %}
+                {% endfor %}
+            </div>
+        </div>
+    </body>
+</html>
