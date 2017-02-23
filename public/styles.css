@@ -53,3 +53,7 @@ button {
   border: 1px dotted gray;
   padding: 3%;
 }
+
+.user-list {
+  list-style: none;
+}
