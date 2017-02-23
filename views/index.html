@@ -21,13 +21,13 @@
         <div class="box">
             <h2> USERS </h2>
             <div class="user-box">
-                <!-- form -->
-                {% include './_userForm.html' %}
-                <!-- show all users -->
-                {% for user in allUsers %}
 
-                    {% include './_usersList.html' with { user } %}
-                {% endfor %}
+                {% include './_userForm.html' %}
+
+                <!-- here we want to include the _usersList.html module -->
+                {% include './_usersList.html' %}
+
+
             </div>
         </div>
     </body>

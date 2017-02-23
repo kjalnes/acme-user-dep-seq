@@ -5,7 +5,26 @@ const User = db.define('user', {
     },
     {
         instanceMethods: {
-            hasAllDepartments: function() {},
+            hasAllDepartments: function() {
+                var departmentsNum;
+                var userDep;
+                db.models.department.findAll()
+                .then(function(allDeps) {
+                    departmentsNum = allDeps;
+                    console.log('!!!!!!!!!!!!!!!allDeps', allDeps)
+                })
+                .then(function() {
+                    return User.findAll()
+                    .then(function(allUserDeps) {
+                        console.log('!!!!!!!!!!!!!allUserDeps', allUserDeps)
+                        userDep = allUserDeps;
+                    })
+                }).then(function() {
+                    console.log(departmentsNum.length, userDep.length)
+                })
+
+
+            },
             hasNoDepartments: function() {},
             hasDepartment: function() {},
             getUserDepartment: function() {},
@@ -20,23 +39,18 @@ const User = db.define('user', {
             //     })
             // }
             getAllDeps: function() {
-                var x;
-                return db.models.department.findAll()
-                .then( function(deps){
-                    x = deps.length;
-                    console.log('x!!!!!!!')
-                    console.log("deps!!!!!!!!!", deps)
-                    console.log("deps.length!!!!!!!!!!", deps.length )
-                    return deps.length;
-                })
-                .then(function(length) {
-                    return length;
-                })
-                .catch( function(err) {
-                    return err
-                });
-                    console.log("deps!!!!!!!!!!!!!", deps);
-                return x;
+              //   console.log('!!!!!!!!!!!')
+              //   debugger;
+              //   var depsLength = db.models.department.findAll()
+              //   .then( function(deps){
+              //     debugger;
+              //     return deps.length;
+              //   })
+              //   .catch( function(err) {
+              //     return err
+              //   });
+
+              // return depsLength;
             }
         }
 });

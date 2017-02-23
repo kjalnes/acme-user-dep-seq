@@ -1,15 +1,21 @@
 
+{% for user in allUsers %}
+
 <h4><a href="/users/{{user.id}}">{{ user.name }}</a></h4>
 
 <ul class="user-list">
-    {% for department in allDepartments %}
-        <li><a href="/users/{{user.id}}/???????user_departments"> {{department.name}} </a></li>
-    {% endfor %}
 
-    {{ user.getAllDeps() }}
+    userid: {{ user.id }}
+    <br>
+    has all Departments: {{ user.hasAllDepartments() }}
+    <!--
+        use user instance methods to check if user has
+        - user.hasAllDepartments() (make user box yellow)
+        - user.hasNoDepartments()  (all deps crossed out)
+        - get userDepartments and display them
+    -->
 
-</ul>
+    </ul>
+    <button type="submit" name="#">Delete</button>
 
-<button type="submit" name="#">Delete</button>
-<!-- //POST /:userId/user_departments -->
-
+{% endfor %}

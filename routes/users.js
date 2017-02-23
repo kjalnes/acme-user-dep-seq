@@ -3,9 +3,9 @@ const db = require('../db');
 const User = db.models.User;
 const methodOverrider = require('method-override');
 
-router.get('/', (req, res, next ) => {
-    res.send('here');
-});
+// router.get('/', (req, res, next ) => {
+//     res.send('here');
+// });
 
 router.post('/', (req, res, next) => {
     let name = req.body.name;
