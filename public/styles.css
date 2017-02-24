@@ -3,14 +3,6 @@ body {
   padding: 3%;
 }
 
-.none {
-  background-color: #efefef;
-}
-
-.all {
-  background-color: #ffcc00;
-}
-
 h1 {
     font-family: 'Andale Mono';
     text-align: center;
@@ -35,7 +27,6 @@ button {
   height: 3em;
   width: 25%;
   margin: 10px;
-  border-radius: 5px;
 }
 
 .box {
@@ -45,11 +36,7 @@ button {
   border: 1px dotted gray;
 }
 
-.box h2 {
-  /*padding : 20px;*/
-}
-
-.user-box, .department-box {
+.user-box, .department-box, .users{
   border: 1px dotted gray;
   padding: 3%;
 }
@@ -57,3 +44,4 @@ button {
 .user-list {
   list-style: none;
 }
+

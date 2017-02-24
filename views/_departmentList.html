@@ -1,1 +1,6 @@
-<h4> {{ department.name }}</h4>
+{% for department in departments %}
+    <h4>{{ department.name }}</h4>
+    <form action="/departments/{{department.id}}?_method=DELETE" method="POST">
+        <button type="submit">Delete</button>
+    </form>
+{% endfor %}

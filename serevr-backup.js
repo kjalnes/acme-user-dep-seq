@@ -2,42 +2,57 @@ const express = require('express');
 const app = express();
 const swig = require('swig');
 swig.setDefaults({ cache : false });
-const path = require('path');
-const methodOverride = require('method-override');
 const db = require('./db');
 const User = db.models.User;
 const Department = db.models.Department;
 const UserDepartment = db.models.UserDepartment;
+const path = require('path');
 
 module.exports = app;
 
 app.set('view engine', 'html');
 app.engine('html', swig.renderFile);
-app.use(methodOverride("_method"));
+
 app.use(require('body-parser').urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
+
 app.use('/users', require('./routes/users'));
 app.use('/departments', require('./routes/departments'));
 
-// home route
+
+// home
 app.get('/', (req, res, next) => {
-    Promise.all([
-        User.findAll(),
-        UserDepartment.findAll(),
-        Department.findAll()
-    ])
-    .then( (data) => {
-        res.render('index', { users: data[0], userDepartments: data[1], departments: data[2] })
+
+    let _user;
+    let _dep;
+
+    User.findAll()
+    .then( (users) => {
+        _users = users;
     })
-    .catch( (err) => console.log(err));
-});
+
+    // here we have to find the users existing departments
+    .then( () => {
+        return Department.findAll()
+        .then( (departments) => {
+            _dep = departments
+        })
+    })
+    .then( () => {
+        res.render('index', { allUsers: _users, allDepartments: _dep })
+    })
+    .catch( (err) => next(err))
+})
+
+
 
 db.sync()
     .then( () => db.seed() )
     .catch( (err) => console.log(err));
 
+
 const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`Port ${port} is a beautiful port`));
+app.listen(port, () => console.log(`Listneing on port ${port}`));
 
 
 

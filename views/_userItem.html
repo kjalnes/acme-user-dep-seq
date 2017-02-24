@@ -1,0 +1,36 @@
+<div>
+    <h4><a href="/users/{{user.id}}">{{ user.name }}</a></h4>
+        {% if user.hasAllDepartments(departments, userDepartments) %}
+            <div class="users" style="background-color: beige">
+            <p> Got all departments :)</p>
+                {% for department in departments %}
+                    <form action="/users/{{user.id}}/user_departments" method="POST" >
+                        <button type="submit" name="departmentId" value="{{department.id}}">{{department.name}}</button>
+                    </form>
+                {% endfor%}
+            </div>
+        {% elseif user.hasNoDepartments(userDepartments) %}
+            <div class="users" style="background-color: bisque">
+                <p> Got no departments :(</p>
+                {% for department in departments %}
+                    <form action="/users/{{user.id}}/user_departments" method="POST">
+                        <button type="submit" name="departmentId" value="{{department.id}}" style="text-decoration: line-through; color:red">{{department.name}}</button>
+                    </form>
+                {% endfor%}
+            </div>
+        {% else %}
+            <div class="users">
+                {% for department in departments %}
+                    {% if user.hasDepartment(departments, userDepartments, department.id) %}
+                        <form action="/users/{{user.id}}/user_departments" method="POST">
+                            <button type="submit" name="departmentId" value="{{department.id}}">{{department.name}}</button>
+                        </form>
+                    {% else %}
+                        <form action="/users/{{user.id}}/user_departments" method="POST">
+                            <button type="submit" name="departmentId" value="{{department.id}}" style="text-decoration: line-through; color:red">{{department.name}}</button>
+                        </form>
+                    {% endif %}
+                {% endfor%}
+            </div>
+        {% endif %}
+</div>

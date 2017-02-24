@@ -1,23 +1,8 @@
-
-{% for user in allUsers %}
-
-<h4><a href="/users/{{user.id}}">{{ user.name }}</a></h4>
-
 <ul class="user-list">
-    userName:  {{ user.name }}
-    <br>
-    userid: {{ user.id }}
-    <br>
-    has all Departments: {{ user.hasAllDepartments() }}
-
-    <!--
-        we want to use user instanceMethods (defined in User.js) to check if user has
-        - user.hasAllDepartments()  (make user box yellow)
-        - user.hasNoDepartments()   (all deps crossed out)
-        - getUserDepartments()      (display them)
-    -->
-
-    </ul>
-    <button type="submit" name="#">Delete</button>
-
-{% endfor %}
+    {% for user in users %}
+        {% include './_userItem.html' with { user } %}
+        <form action="/users/{{user.id}}?_method=DELETE" method="POST">
+            <button type="submit">Delete {{user.name}}</button>
+        </form>
+    {% endfor %}
+</ul>

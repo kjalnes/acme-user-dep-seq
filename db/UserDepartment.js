@@ -4,8 +4,3 @@ const UserDepartment = db.define('user_department');
 
 module.exports = UserDepartment;
 
-// userDepartment.create({ })
-
-//findById
-
-
