@@ -7,9 +7,7 @@ User.hasMany(UserDepartment);
 Department.hasMany(UserDepartment);
 UserDepartment.belongsTo(User);
 
-
 let _connection;
-
 const connect = () => {
     if (_connection) {
         return _connection;

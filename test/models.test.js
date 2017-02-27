@@ -28,8 +28,25 @@ describe('All models', () => {
             it('there are three departments', () => {
                 expect(departments.length).to.equal(3);
             })
-
        })
+
+        describe('deletes department', () => {
+            let departments;
+            beforeEach( (done) => {
+                db.models.Department.deleteDepartment(1)
+                .then( () => {
+                    return db.models.Department.findAll()
+                    .then( (_departments) => {
+                        departments = _departments
+                    })
+                })
+                .then(() => done())
+                .catch( (err) => done(err))
+            });
+            it('there are now two departments', () => {
+                expect(departments.length).to.equal(2);
+            })
+        })
 
     });
 
@@ -53,6 +70,25 @@ describe('All models', () => {
                 expect(users.length).to.equal(3);
             })
         });
+
+        describe('deletes user', () => {
+            let users;
+            beforeEach( (done) => {
+                db.models.User.deleteUser(1)
+                .then( () => {
+                    return db.models.User.findAll()
+                    .then( (_users) => {
+                        users = _users
+                    })
+                })
+                .then(() => done())
+                .catch( (err) => done(err))
+            });
+            it('there are now two users', () => {
+                expect(users.length).to.equal(2);
+            })
+        })
+
     });
 
 
