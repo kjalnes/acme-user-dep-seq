@@ -4,7 +4,7 @@ const swig = require('swig');
 swig.setDefaults({ cache : false });
 const path = require('path');
 const methodOverride = require('method-override');
-const db = require('./db');
+const db = require('./db'); // assumes that we are referring to a index file in db folder
 const User = db.models.User;
 const Department = db.models.Department;
 const UserDepartment = db.models.UserDepartment;
