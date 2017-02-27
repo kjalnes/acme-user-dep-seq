@@ -2,24 +2,15 @@ const router = require('express').Router();
 const db = require('../db');
 
 router.post('/', (req, res, next) => {
-    User.create({name : req.body.name});
+    db.models.User.create({name : req.body.name});
     res.redirect('/')
 })
 
 // delete user
 router.delete('/:id', (req, res, next) => {
-   // let id = req.params.id
-   //  User.deleteUser(id)
-     db.models.User.destroy({
-        where: {
-            id: req.params.id
-        }
-    })
-    db.models.UserDepartment.destroy({
-        where: {
-            userId: req.params.id
-        }
-    })
+    let id = req.params.id
+    db.models.User.deleteUser(id)
+    db.models.UserDepartment.deleteUserDepartment(id)
     res.redirect('/');
 });
 

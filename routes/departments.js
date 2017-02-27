@@ -9,16 +9,9 @@ router.post('/', (req, res, next) => {
 
 // delete department
 router.delete('/:id', (req, res, next) => {
-    db.models.Department.destroy({
-        where: {
-            id: req.params.id
-        }
-    })
-    db.models.UserDepartment.destroy({
-        where: {
-            departmentId: req.params.id
-        }
-    })
+    let id = req.params.id;
+    db.models.Department.deleteDepartment(id)
+    db.models.UserDepartment.deleteUserDepartment(null, id)
     res.redirect('/');
 })
 

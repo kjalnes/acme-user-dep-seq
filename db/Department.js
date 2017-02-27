@@ -6,7 +6,10 @@ const Department = db.define('department', {
 {
     classMethods: {
         getDepartments: () => {
-            return Department.findAll()
+            return this.findAll()
+        },
+        deleteDepartment: (id) => {
+            return db.models.department.destroy({ where : { id: id }})
         }
     }
 });
