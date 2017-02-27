@@ -5,7 +5,11 @@ const UserDepartment = require('./UserDepartment');
 const User = db.define('user', {
         name: db.Sequelize.STRING
     },
-    {
+    {   classMethods: {
+            deleteUser: function(id) {
+                return this.destroy({ where : { id: id }})
+            }
+        },
         instanceMethods: {
             hasAllDepartments: function(Department, UserDepartment) {
                 let usersDep = UserDepartment.filter( (dep) => {
