@@ -9,7 +9,6 @@ describe('All models', () => {
             .catch( (e) => done(e))
     });
 
-
     describe('Department', () => {
        it('exists', () => {
             expect(db.models.Department).to.be.ok;
@@ -90,8 +89,6 @@ describe('All models', () => {
         })
 
     });
-
-
 
     describe('UserDepartment', () => {
        it('exists', () => {
