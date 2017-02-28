@@ -32,8 +32,8 @@ describe('routes', () => {
                 .expect(302)
                 .then( () => done())
                 .catch( err => done(err));
-            })
-       })
+            });
+       });
 
        describe('POST /departments', () => {
         it('returns 302', (done) => {
@@ -41,10 +41,10 @@ describe('routes', () => {
                 .expect(302)
                 .then( () => done())
                 .catch( err => done(err));
-            })
-       })
+            });
+       });
 
-       describe('DELETE /users', () => {
+       describe('DELETE  /users/1', () => {
         it('returns 302', (done) => {
             client.delete('/users/1')
                 .expect(302)

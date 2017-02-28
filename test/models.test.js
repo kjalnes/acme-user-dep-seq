@@ -6,13 +6,13 @@ describe('All models', () => {
         db.sync()
             .then( () => db.seed())
             .then( () => done())
-            .catch( (e) => done(e))
+            .catch( (err) => done(err))
     });
 
     describe('Department', () => {
        it('exists', () => {
             expect(db.models.Department).to.be.ok;
-       })
+       });
 
        describe('seeded data', () => {
             let departments;
@@ -26,8 +26,8 @@ describe('All models', () => {
             });
             it('there are three departments', () => {
                 expect(departments.length).to.equal(3);
-            })
-       })
+            });
+       });
 
         describe('deletes department', () => {
             let departments;
@@ -44,16 +44,15 @@ describe('All models', () => {
             });
             it('there are now two departments', () => {
                 expect(departments.length).to.equal(2);
-            })
-        })
+            });
+        });
 
     });
-
 
     describe('User', () => {
         it('exists', () => {
             expect(db.models.User).to.be.ok;
-        })
+        });
 
         describe('Seeded data', () => {
             let users;
@@ -67,7 +66,7 @@ describe('All models', () => {
             });
             it('there are 3 users in the testing db', () => {
                 expect(users.length).to.equal(3);
-            })
+            });
         });
 
         describe('deletes user', () => {
@@ -85,8 +84,8 @@ describe('All models', () => {
             });
             it('there are now two users', () => {
                 expect(users.length).to.equal(2);
-            })
-        })
+            });
+        });
 
     });
 

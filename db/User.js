@@ -24,10 +24,10 @@ const User = db.define('user', {
                 return usersDep.length === 0;
             },
             hasDepartment: function( departments, userDepartments, departmentId) {
-                let dep = this.getUserDepartment(departments, userDepartments, departmentId)
+                let dep = this.getUserDepartment(userDepartments, departmentId)
                 return dep.length > 0 ? true : false;
             },
-            getUserDepartment: function(departments, userDepartments, departmentId) {
+            getUserDepartment: function(userDepartments, departmentId) {
                 let userDep = userDepartments.filter( (dep) => {
                     return dep.userId === this.id;
                 }).filter( (deps) => {
