@@ -6,6 +6,7 @@ const UserDepartment = require('./UserDepartment')
 User.hasMany(UserDepartment);
 Department.hasMany(UserDepartment);
 UserDepartment.belongsTo(User);
+UserDepartment.belongsTo(Department);
 
 let _connection;
 const connect = () => {

@@ -1,8 +1,5 @@
 <ul class="user-list">
     {% for user in users %}
         {% include './_userItem.html' with { user } %}
-        <form action="/users/{{user.id}}?_method=DELETE" method="POST">
-            <button type="submit">Delete {{user.name}}</button>
-        </form>
     {% endfor %}
 </ul>

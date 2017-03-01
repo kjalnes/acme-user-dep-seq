@@ -16,3 +16,6 @@ router.delete('/:id', (req, res, next) => {
 })
 
 module.exports = router;
+
+
+// question: am I using classMethods correct here on line 13/14 or would it be better to delete from the routes
