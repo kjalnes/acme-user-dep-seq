@@ -19,7 +19,7 @@ app.use('/departments', require('./routes/departments'));
 // home route
 app.get('/', (req, res, next) => {
     Promise.all([
-        db.models.User.findAll({ include: [ UserDepartment ]}),
+        db.models.User.findAll(),
         db.models.UserDepartment.findAll(),
         db.models.Department.findAll()
     ])
