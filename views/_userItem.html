@@ -1,17 +1,17 @@
 <div>
     <h4><a href="/users/{{user.id}}">{{ user.name }}</a></h4>
-        {% if user.hasAllDepartments(departments, userDepartments) %}
+        {% if user.hasAllDepartments(departments) %}
             <div class="users" style="background-color: beige">
-            <p> Got all departments :)</p>
+            <p> Got all departments </p>
                 {% for department in departments %}
                     <form action="/users/{{user.id}}/user_departments" method="POST" >
                         <button type="submit" name="departmentId" value="{{department.id}}">{{department.name}}</button>
                     </form>
                 {% endfor%}
             </div>
-        {% elseif user.hasNoDepartments(userDepartments) %}
+        {% elseif user.hasNoDepartments() %}
             <div class="users" style="background-color: bisque">
-                <p> Got no departments :(</p>
+                <p> Got no departments </p>
                 {% for department in departments %}
                     <form action="/users/{{user.id}}/user_departments" method="POST">
                         <button type="submit" name="departmentId" value="{{department.id}}" style="text-decoration: line-through; color:red">{{department.name}}</button>
@@ -21,7 +21,7 @@
         {% else %}
             <div class="users">
                 {% for department in departments %}
-                    {% if user.hasDepartment(departments, userDepartments, department.id) %}
+                    {% if user.hasDepartment(departments, department.id) %}
                         <form action="/users/{{user.id}}/user_departments" method="POST">
                             <button type="submit" name="departmentId" value="{{department.id}}">{{department.name}}</button>
                         </form>
@@ -29,6 +29,7 @@
                         <form action="/users/{{user.id}}/user_departments" method="POST">
                             <button type="submit" name="departmentId" value="{{department.id}}" style="text-decoration: line-through; color:red">{{department.name}}</button>
                         </form>
+
                     {% endif %}
                 {% endfor%}
             </div>

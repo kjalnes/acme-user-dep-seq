@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "start:dev": "DATABASE_URL=postgres://localhost/acme_user_dep_seq node server.js",
+    "start:dev": "DATABASE_URL=postgres://localhost/acme_user_dep_seq nodemon server.js",
     "test:dev": "DATABASE_URL=postgres://localhost/acme_user_dep_seq_test nodemon ./node_modules/mocha/bin/mocha"
   },
   "repository": {
