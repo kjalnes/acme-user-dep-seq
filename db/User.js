@@ -23,7 +23,7 @@ const User = db.define('user', {
                 })
                 return usersDep.length === 0;
             },
-            hasDepartment: function( departments, userDepartments, departmentId) {
+            hasDepartment: function(departments, userDepartments, departmentId) {
                 let dep = this.getUserDepartment(userDepartments, departmentId)
                 return dep.length > 0 ? true : false;
             },
