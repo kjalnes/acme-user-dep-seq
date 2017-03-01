@@ -4,6 +4,7 @@
   "description": "Weekend Project Week 6 [Sequelize, relationships..]",
   "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "start:dev": "DATABASE_URL=postgres://localhost/acme_user_dep_seq node server.js",
     "test:dev": "DATABASE_URL=postgres://localhost/acme_user_dep_seq_test nodemon ./node_modules/mocha/bin/mocha"
   },
