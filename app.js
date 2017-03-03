@@ -14,10 +14,12 @@ app.use(methodOverride("_method"));
 app.use(require('body-parser').urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+//great!
 app.use('/users', require('./routes/users'));
 app.use('/departments', require('./routes/departments'));
 
 
+//great!
 app.get('/', (req, res, next) => {
     Promise.all([
         db.models.User.findAll({
@@ -26,7 +28,8 @@ app.get('/', (req, res, next) => {
         db.models.Department.findAll()
     ])
     .then( (data) => {
+        //you might be able to do this.. [ users, departments ] = result
         res.render('index', { users: data[0], departments: data[1] })
     })
-    .catch( (err) => console.log(err));
+    .catch( (err) => console.log(err));//you are swallowing your error - you can log it.. but call next(err) so you don't hang
 });

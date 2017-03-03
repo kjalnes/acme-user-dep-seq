@@ -9,6 +9,7 @@ UserDepartment.belongsTo(User);
 UserDepartment.belongsTo(Department);
 
 let _connection;
+//i know I did this.. but I'm not sure you have to...
 const connect = () => {
     if (_connection) {
         return _connection;
@@ -30,7 +31,7 @@ const seed = () => {
               Department.create( { name : 'Bobs Burger' })
             ]
         );
-    })
+    })//naming how about (tina, gene, linda, jimmyPesto, burgerKing..etc
     .spread( (user1, user2, user3, dep1, dep2, dep3) => {
         return Promise.all(
             [
@@ -48,7 +49,7 @@ const seed = () => {
 const sync = () => {
     return connect()
     .then( () =>  {
-        console.log('The ship is syncing');
+        console.log('The ship is syncing');//cute!
         return db.sync({ force: true });  // drop tables if exists... is also a promise
     })
 }

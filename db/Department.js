@@ -5,11 +5,12 @@ const Department = db.define('department', {
     },
     {
         classMethods: {
+            //not sure what this buys you.
             getDepartments: () => {
-                return this.findAll()
+                return this.findAll();
             },
             deleteDepartment: (id) => {
-                return db.models.department.destroy({ where : { id: id }})
+                return db.models.department.destroy({ where : { id }});
             }
         }
     }

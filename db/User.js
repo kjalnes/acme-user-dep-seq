@@ -13,7 +13,7 @@ const User = db.define('user', {
             hasAllDepartments: function(departments) {
                 return this.user_departments.length === departments.length;
             },
-            hasNoDepartments: function(departments) {
+            hasNoDepartments: function() {
                 return this.user_departments.length === 0;
             },
             hasDepartment: function(departments, departmentId) {
@@ -22,10 +22,12 @@ const User = db.define('user', {
             },
             getUserDepartment: function(departmentId) {
                 let userDep = this.user_departments.filter( (dep) => {
+                  //i don't think you need this step-- the user_departments on this user already belong to the user
                     return dep.userId === this.id;
                 }).filter( (deps) => {
+                    //but this is good..
                     return deps.departmentId === departmentId;
-                })
+                });
                 return userDep;
             }
         }
